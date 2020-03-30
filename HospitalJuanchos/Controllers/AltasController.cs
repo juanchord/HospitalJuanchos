@@ -20,6 +20,35 @@ namespace HospitalJuanchos.Controllers
             var altas = db.Altas.Include(a => a.Ingresos);
             return View(altas.ToList());
         }
+        [HttpPost]
+        public ActionResult Index(string busqueda, string select)
+        {
+            if (busqueda == string.Empty)
+            {
+                var altas = db.Altas.Include(c => c.Paciente).Include(c => c.Ingresos);
+                return View(altas.ToList());
+            }
+            else if (select == string.Empty)
+            {
+                var altas = db.Altas.Include(c => c.Paciente).Include(c => c.Ingresos);
+                return View(altas.ToList());
+            }
+
+            else if (select == "Paciente")
+            {
+                var altas = db.Altas.Include(c => c.Paciente).Include(c => c.Ingresos).Where(a => a.Nombre_De_Paciente.Equals(busqueda));
+                return View(altas.ToList());
+            }
+            else if (select == "Fecha")
+            {
+                var altas = db.Altas.Include(c => c.Paciente).Include(c => c.Ingresos).Where(a => a.Fecha_De_Ingreso == busqueda);
+                return View(altas.ToList());
+            }
+
+            return View(db.Altas.ToList());
+
+
+        }
 
         // GET: Altas/Details/5
         public ActionResult Details(int? id)

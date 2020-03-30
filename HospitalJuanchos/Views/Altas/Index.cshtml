@@ -4,11 +4,30 @@
     ViewBag.Title = "Hospital Juanchos - Alta Medica";
 }
 
-<h2>Index</h2>
+<h2>Lista de Altas</h2>
 
 <p>
     @Html.ActionLink("Crear Nueva Alta Medica", "Create")
 </p>
+@using (Html.BeginForm("Index", "Altas", FormMethod.Post))
+{
+    <div class="between">
+        @Html.TextBox("busqueda", "", new { @class = "form-control mb-2", placeholder = "Buscar..." })
+        <br />
+        <select name="select" class="form-control col col-lg-2">
+            <option value="">Elige una opcion</option>
+            <option value="Paciente">Nombre de Paciente</option>
+            <option value="Fecha">Fecha</option>
+
+        </select>
+
+        <div class="col-2">
+            <button type="submit" class="btn btn-success">Buscar</button>
+        </div>
+    </div>
+}
+<br />
+<br />
 <table class="table">
     <tr>
         <th>
@@ -32,28 +51,29 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ingresos.ID_Ingresos)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre_De_Paciente)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fecha_De_Ingreso)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fecha_De_Salida)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Habitacion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Monto)
-        </td>
-        
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ingresos.ID_Ingresos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre_De_Paciente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha_De_Ingreso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha_De_Salida)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Habitacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Monto)
+            </td>
+
+        </tr>
+    }
 
 </table>
