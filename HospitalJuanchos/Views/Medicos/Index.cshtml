@@ -4,11 +4,30 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Listado de Medicos</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear Nuevo Medico", "Create")
 </p>
+
+@using (Html.BeginForm("Index", "Medicos", FormMethod.Post))
+{
+    <div class="between">
+        @Html.TextBox("busqueda", "", new { @class = "form-control mb-2", placeholder = "Buscar..." })
+        <br />
+        <select name="select" class="form-control col col-lg-2">
+            <option value="">Elige una opcion</option>
+            <option value="Nombre">Nombre</option>
+            <option value="Especialidad">Especialidad</option>
+        </select>
+
+        <div class="col-2">
+            <button type="submit" class="btn btn-success">Buscar</button>
+        </div>
+    </div>
+}
+<br />
+<br />
 <table class="table">
     <tr>
         <th>
@@ -23,7 +42,8 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Nombre_Med)
@@ -34,12 +54,16 @@
         <td>
             @Html.DisplayFor(modelItem => item.Especialidad)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID_Medico }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID_Medico }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID_Medico })
+        <td class="btn btn-primary myBtn">
+            @Html.ActionLink("Editar", "Edit", new { id = item.ID_Medico })
+        </td>
+        <td class="btn btn-danger myBtn">
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.ID_Medico })
+        </td>
+        <td class="btn btn-success myBtn">
+            @Html.ActionLink("Detalles", "Details", new { id = item.ID_Medico })
         </td>
     </tr>
-}
+    }
 
 </table>
