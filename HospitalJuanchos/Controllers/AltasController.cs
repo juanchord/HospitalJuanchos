@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using HospitalJuanchos.Models;
+using Rotativa;
 
 namespace HospitalJuanchos.Controllers
 {
@@ -48,6 +49,11 @@ namespace HospitalJuanchos.Controllers
             return View(db.Altas.ToList());
 
 
+        }
+        public ActionResult Imprimir()
+        {
+            var print = new ActionAsPdf("Index");
+            return print;
         }
 
         // GET: Altas/Details/5
