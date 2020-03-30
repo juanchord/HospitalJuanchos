@@ -1,12 +1,24 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 10px;
     padding-bottom: 20px;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+    a:hover {
+        text-decoration: none;
+        color: inherit;
+    }
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    background: #fff;
+    border-radius: 12px;
+    min-height: 800px !important;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
