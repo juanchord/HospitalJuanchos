@@ -1,0 +1,164 @@
+﻿@model HospitalJuanchos.Models.Altas
+
+@{
+    ViewBag.Title = "Hospital Juanchos - Alta Medica";
+}
+
+<h2>Crear Alta Medica</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Altas</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nombre_De_Paciente, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Nombre_De_Paciente, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nombre_De_Paciente, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Fecha_De_Ingreso, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Fecha_De_Ingreso, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Fecha_De_Ingreso, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Fecha_De_Salida, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Fecha_De_Salida, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Fecha_De_Salida, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Habitacion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Habitacion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Habitacion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Monto, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Monto, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Monto, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ID_Ingreso, "ID_Ingreso", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ID_Ingreso", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ID_Ingreso, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Atras", "Index")
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(function (){
+            $("#ID_Ingreso").change(function () {
+                var url = "@Url.Action("NombrePac", "Altas")";
+                var clavePaciente = $("#ID_Ingreso").val();
+                var data = { clavePaciente: clavePaciente };
+                $.post(url, data).done(function (data) {
+                    $("#Nombre_De_Paciente").val(data);
+                }).fail(manejarErrorAjax).always(function (){
+
+                });
+            });
+            $("#ID_Ingreso").change(function () {
+                var url = "@Url.Action("FechaDeIngreso", "Altas")";
+                var clavePaciente = $("#ID_Ingreso").val();
+                var data = { clavePaciente: clavePaciente };
+                $.post(url, data).done(function (data) {
+                    $("#Fecha_De_Ingreso").val(data);
+                }).fail(manejarErrorAjax).always(function (){
+
+                });
+             });
+            $("#ID_Ingreso").change(function () {
+                var url = "@Url.Action("NumHabitacion", "Altas")";
+                var clavePaciente = $("#ID_Ingreso").val();
+                var data = { clavePaciente: clavePaciente };
+                $.post(url, data).done(function (data) {
+                    $("#Habitacion").val(data);
+                }).fail(manejarErrorAjax).always(function (){
+
+                });
+             });
+
+            $("#ID_Ingreso").change(function () {
+
+                $("#Fecha_De_Salida").val();
+
+            });
+
+            $("#ID_Ingreso").change(function () {
+                var url = "@Url.Action("MontoT", "Altas")";
+                var clavePaciente = $("#ID_Ingreso").val();
+                var data = { clavePaciente: clavePaciente };
+                $.post(url, data).done(function (data) {
+                    $("#Monto").val(generaMonto(data));
+                }).fail(manejarErrorAjax).always(function (){
+
+                });
+             });
+
+
+            function manejarErrorAjax(err) {
+                console.log(err.responseText);
+            }
+        })
+
+   /*    function addZero(i) {
+            if (i < 10) {
+                i = '0' + i;
+            }
+            return i;
+        }
+
+        function hoyFecha() {
+            var hoy = new Date();
+            var dd = hoy.getDate();
+            var mm = hoy.getMonth() + 1;
+            var yyyy = hoy.getFullYear();
+
+            dd = addZero(dd);
+            mm = addZero(mm);
+
+            return yyyy + '-' + mm + '-' + dd;
+        }*/
+        console.log(generaMonto())
+
+        function generaMonto(data) {
+            var fechaf = $("#Fecha_De_Salida").val().replace("-", "");
+            var fechai = $("#Fecha_De_Ingreso").val().replace("-", "");
+            var montoPorDia = data;
+            resta = fechaf.replace("-", "") - fechai.replace("-", "");
+
+            return resta * data;
+        }
+
+    </script>
+}

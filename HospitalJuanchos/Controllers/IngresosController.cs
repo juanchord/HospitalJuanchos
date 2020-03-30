@@ -20,6 +20,40 @@ namespace HospitalJuanchos.Controllers
             var ingresos = db.Ingresos.Include(i => i.Habitacion).Include(i => i.Paciente);
             return View(ingresos.ToList());
         }
+        [HttpPost]
+        public ActionResult Index(string busqueda, string select)
+        {
+            if (busqueda == string.Empty)
+            {
+                var ingresos = db.Ingresos.Include(c => c.Habitacion).Include(c => c.Paciente);
+                return View(ingresos.ToList());
+            }
+            else if (select == string.Empty)
+            {
+                var ingresos = db.Ingresos.Include(c => c.Habitacion).Include(c => c.Paciente);
+                return View(ingresos.ToList());
+            }
+
+            else if (select == "Num_Hab")
+            {
+                int s = (from g in db.Habitaciones where g.Numero_Hab == busqueda select g.ID_Habitacion).SingleOrDefault();
+                //var ext = (from ex in db.Habitaciones where ex.Num_Habitacion == busqueda select ex).First().ID_Habitacion;
+                //string x = ext.ToString();
+                //int y = int.Parse(x);
+
+                var ingresos = db.Ingresos.Include(c => c.Habitacion).Include(c => c.Paciente).Where(a => a.ID_Habitacion.Equals(s));
+                return View(ingresos.ToList());
+            }
+            else if (select == "Fecha_De_Ingreso")
+            {
+                var ingresos = db.Ingresos.Include(c => c.Habitacion).Include(c => c.Paciente).Where(a => a.Fecha_De_Ingreso == busqueda);
+                return View(ingresos.ToList());
+            }
+
+            return View(db.Ingresos.ToList());
+
+
+        }
 
         // GET: Ingresos/Details/5
         public ActionResult Details(int? id)
