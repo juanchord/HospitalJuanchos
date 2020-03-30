@@ -1,0 +1,56 @@
+﻿@model HospitalJuanchos.Models.Citas
+
+@{
+    ViewBag.Title = "Hospital Juanchos - Borrar";
+}
+
+<h2>Borrar Cita</h2>
+
+<h3>Estas seguro que desea Borrar?</h3>
+<div>
+    <h4>Borrar Cita</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Medico.Nombre_Med)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Medico.Nombre_Med)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Paciente.Nombre_Pac)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Paciente.Nombre_Pac)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha_De_Cita)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_De_Cita)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hora_De_Cita)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hora_De_Cita)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Atras", "Index")
+        </div>
+    }
+</div>

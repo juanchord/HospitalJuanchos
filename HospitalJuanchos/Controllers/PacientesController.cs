@@ -30,7 +30,7 @@ namespace HospitalJuanchos.Controllers
                     abc = abc.Where(b => b.Nombre_Pac.Contains(busqueda));
                     return View(abc);
                 }
-        if (select == "Especialidad")
+        else if (select == "Cedula")
                 {
                     var abc = from a in db.Pacientes
                               where a.Cedula == busqueda
@@ -40,22 +40,25 @@ namespace HospitalJuanchos.Controllers
                 }
 
 
-            if (activo == "Asegurado")
+            else if (activo == "Asegurado")
             {
                 var abc = from a in db.Pacientes
                           where a.Asegurado.Equals(true)
                           select a;
                 return View(abc);
             }
-            if (activo == "No Asegurado")
+            else if (activo == "No Asegurado")
             {
                 var abc = from a in db.Pacientes
                           where a.Asegurado.Equals(false)
                           select a;
                 return View(abc);
             }
-           
-            return View(db.Medicos.ToList());
+        
+
+
+
+            return View(db.Pacientes.ToList());
 
 
 
