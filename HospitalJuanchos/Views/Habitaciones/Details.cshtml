@@ -1,0 +1,42 @@
+﻿@model HospitalJuanchos.Models.Habitaciones
+
+@{
+    ViewBag.Title = "Hospital Juanchos - Detalles de Habitacion";
+}
+
+<h2>Detalles de la Habitacion</h2>
+
+<div>
+    <h4>Habitaciones</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Numero_Hab)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Numero_Hab)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo_Hab)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo_Hab)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar Habitacion", "Edit", new { id = Model.ID_Habitacion }) |
+    @Html.ActionLink("Atras", "Index")
+</p>
