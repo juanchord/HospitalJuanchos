@@ -1,0 +1,42 @@
+﻿@model HospitalJuanchos.Models.Ingresos
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Ingresos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Habitacion.Numero_Hab)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Habitacion.Numero_Hab)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Paciente.Nombre_Pac)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Paciente.Nombre_Pac)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha_De_Ingreso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_De_Ingreso)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_Ingresos }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

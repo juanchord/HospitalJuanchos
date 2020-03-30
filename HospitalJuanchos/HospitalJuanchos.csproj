@@ -136,6 +136,7 @@
     <Compile Include="Controllers\CitasController.cs" />
     <Compile Include="Controllers\HabitacionesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IngresosController.cs" />
     <Compile Include="Controllers\MedicosController.cs" />
     <Compile Include="Controllers\PacientesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -213,6 +214,11 @@
     <Content Include="Views\Citas\Details.cshtml" />
     <Content Include="Views\Citas\Edit.cshtml" />
     <Content Include="Views\Citas\Index.cshtml" />
+    <Content Include="Views\Ingresos\Create.cshtml" />
+    <Content Include="Views\Ingresos\Delete.cshtml" />
+    <Content Include="Views\Ingresos\Details.cshtml" />
+    <Content Include="Views\Ingresos\Edit.cshtml" />
+    <Content Include="Views\Ingresos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
