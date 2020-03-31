@@ -7,7 +7,6 @@
 <h2>Detalles de la Cita</h2>
 
 <div>
-    <h4>Citas</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -45,6 +44,7 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Editar Cita", "Edit", new { id = Model.ID_Cita }) |
-    @Html.ActionLink("Atras", "Index")
+    <a href="@Url.Action("Edit", "Citas", new { id = Model.ID_Cita})" class="btn btn-success myBtn">Editar Habitacion</a>
+
+    <a href="@Url.Action("Index", "Citas")" class="btn btn-warning myBtn">Atras</a>
 </p>

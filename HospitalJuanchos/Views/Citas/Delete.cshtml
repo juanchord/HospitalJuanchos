@@ -48,9 +48,9 @@
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Atras", "Index")
-        </div>
+    <div class="form-actions no-color">
+        <input type="submit" value="Borrar" class="btn btn-danger myBtn" /> |
+        <a href="@Url.Action("Index", "Citas")" class="btn btn-warning myBtn">Atras</a>
+    </div>
     }
 </div>
