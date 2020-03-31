@@ -7,8 +7,8 @@
 <h2>Listado de Medicos</h2>
 
 <p>
-    @Html.ActionLink("Crear Nuevo Medico", "Create")
-    @Html.ActionLink("Imprimir", "Imprimir")
+    <a href="@Url.Action("Create", "Medicos")" class="btn btn-success myBtn">Crear Nuevo Medico</a>
+    <a href="@Url.Action("Imprimir", "Medicos")" class="btn btn-danger myBtn">Convertir a PDF</a>
 </p>
 
 @using (Html.BeginForm("Index", "Medicos", FormMethod.Post))

@@ -7,8 +7,8 @@
 <h2>Lista de Pacientes</h2>
 
 <p>
-    @Html.ActionLink("Crear nuevo Paciente", "Create")
-    @Html.ActionLink("Imprimir", "Imprimir")
+    <a href="@Url.Action("Create", "Pacientes")" class="btn btn-success myBtn">Crear Nuevo Paciente</a>
+    <a href="@Url.Action("Imprimir", "Pacientes")" class="btn btn-danger myBtn">Convertir a PDF</a>
 </p>
 @using (Html.BeginForm("Index", "Pacientes", FormMethod.Post))
 {
@@ -24,8 +24,8 @@
         <div class="col-2">
             <button type="submit" class="btn btn-success">Buscar</button>
         </div>
-        <button name="activo" value="Asegurado">Asegurado</button>
-        <button name="activo" value="No Asegurado">No Asegurado</button>
+        <button name="activo" class="btn btn success myBtn" value="Asegurado">Asegurado</button>
+        <button name="activo" class="btn btn-danger myBtn" value="No Asegurado">No Asegurado</button>
     </div>
 }
 <table class="table">
