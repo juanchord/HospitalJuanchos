@@ -4,11 +4,9 @@
     ViewBag.Title = "Hospital Juanchos - Borrar Habitacion";
 }
 
-<h2>Borrando Habitacion</h2>
 
-<h3>Estas seguro que desea borrar?</h3>
+<h3 class="text-center">Estas seguro que desea borrar?</h3>
 <div>
-    <h4>Habitaciones</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -40,9 +38,9 @@
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Atras", "Index")
-        </div>
+    <div class="form-actions no-color">
+        <input type="submit" value="Borrar" class="btn btn-danger myBtn" /> 
+        <a href="@Url.Action("Index", "Habitaciones")" class="btn btn-warning myBtn">Atras</a>
+    </div>
     }
 </div>

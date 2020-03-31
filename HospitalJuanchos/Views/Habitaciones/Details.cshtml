@@ -7,7 +7,6 @@
 <h2>Detalles de la Habitacion</h2>
 
 <div>
-    <h4>Habitaciones</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -37,6 +36,8 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Editar Habitacion", "Edit", new { id = Model.ID_Habitacion }) |
-    @Html.ActionLink("Atras", "Index")
+    <a href="@Url.Action("Edit", "Habitaciones", new { id = Model.ID_Habitacion})" class="btn btn-success myBtn">Editar Habitacion</a>
+
+    <a href="@Url.Action("Index", "Habitaciones")" class="btn btn-warning myBtn">Atras</a>
 </p>
+ 
