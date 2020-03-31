@@ -7,8 +7,8 @@
 <h2>Listado de Ingresos</h2>
 
 <p>
-    @Html.ActionLink("Crear nuevo Ingreso", "Create")
-    @Html.ActionLink("Imprimir", "Imprimir")
+    <a href="@Url.Action("Create", "Ingresos")" class="btn btn-success myBtn">Crear Nuevo Ingreso</a>
+    <a href="@Url.Action("Imprimir", "Ingresos")" class="btn btn-danger myBtn">Convertir a PDF</a>
 
 </p>
 @using (Html.BeginForm("Index", "Ingresos", FormMethod.Post))
