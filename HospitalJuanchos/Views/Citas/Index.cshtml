@@ -7,8 +7,8 @@
 <h2>Lista de Citas Medicas</h2>
 
 <p>
-    @Html.ActionLink("Crear nueva Cita", "Create")
-    @Html.ActionLink("Imprimir", "Imprimir")
+    <a href="@Url.Action("Create", "Citas")" class="btn btn-success myBtn">Crear Nueva Cita Medicaa</a>
+    <a href="@Url.Action("Imprimir", "Citas")" class="btn btn-danger myBtn">Convertir a PDF</a>
 
 </p>
 @using (Html.BeginForm("Index", "Citas", FormMethod.Post))

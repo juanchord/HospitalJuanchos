@@ -7,8 +7,8 @@
 <h2>Listado de Habitaciones</h2>
 
 <p>
-    @Html.ActionLink("Crear nueva Habitacion", "Create")
-    @Html.ActionLink("Imprimir", "Imprimir")
+    <a href="@Url.Action("Create", "Habitaciones")" class="btn btn-success myBtn">Crear Nueva Habitacion</a>
+    <a href="@Url.Action("Imprimir", "Habitaciones")" class="btn btn-danger myBtn">Convertir a PDF</a>
 </p>
  @using (Html.BeginForm("Index", "Habitaciones", FormMethod.Post))
  {

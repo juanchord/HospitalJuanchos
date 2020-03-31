@@ -22,7 +22,7 @@ namespace HospitalJuanchos.Controllers
             return View(altas.ToList());
         }
         [HttpPost]
-        public ActionResult Index(string busqueda, string select)
+        public ActionResult Index(string busqueda, string select, string activo)
         {
             if (busqueda == string.Empty)
             {
@@ -42,13 +42,20 @@ namespace HospitalJuanchos.Controllers
             }
             else if (select == "Fecha")
             {
-                var altas = db.Altas.Include(c => c.Paciente).Include(c => c.Ingresos).Where(a => a.Fecha_De_Ingreso == busqueda);
+                var altas = db.Altas.Include(c => c.Paciente).Include(c => c.Ingresos).Where(a => a.Fecha_De_Salida == busqueda);
                 return View(altas.ToList());
             }
 
+            else if (activo == "Sumatoria")
+            {
+                var abc = db.Altas.Sum(x => x.Monto).ToString();
+                ViewBag.total = abc;
+
+                return View(abc);
+            }
+
             return View(db.Altas.ToList());
-
-
+        
         }
         public ActionResult Imprimir()
         {
