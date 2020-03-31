@@ -6,10 +6,10 @@
 
 <h2>Crear</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Crear Medicos</h4>
         <hr />
@@ -40,12 +40,12 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Crear" class="btn btn-success myBtn" />
             </div>
         </div>
     </div>
 }
-
 <div>
-    @Html.ActionLink("Atras", "Index")
+    <a href="@Url.Action("Index", "Medicos")" class="btn btn-warning myBtn">Atras</a>
 </div>
+

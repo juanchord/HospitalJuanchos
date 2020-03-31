@@ -8,7 +8,6 @@
 
 <h3>Estas seguro que desea Borrar?</h3>
 <div>
-    <h4>Medicos</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -40,9 +39,9 @@
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Atras", "Index")
-        </div>
+    <div class="form-actions no-color">
+        <input type="submit" value="Borrar" class="btn btn-danger" /> |
+        <a href="@Url.Action("Index", "Medicos")" class="btn btn-warning myBtn">Atras</a>
+    </div>
     }
 </div>
