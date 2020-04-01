@@ -38,21 +38,30 @@ namespace HospitalJuanchos.Controllers
             else if (select == "Paciente")
             {
                 var altas = db.Altas.Include(c => c.Paciente).Include(c => c.Ingresos).Where(a => a.Nombre_De_Paciente.Equals(busqueda));
+                ViewBag.total = altas.Sum(a => a.Monto);
+                ViewBag.conteo = altas.Count();
+                ViewBag.min = altas.Min(a => a.Monto);
+                ViewBag.max = altas.Max(a => a.Monto);
+                ViewBag.media = altas.Average(a => a.Monto);
                 return View(altas.ToList());
             }
             else if (select == "Fecha")
             {
                 var altas = db.Altas.Include(c => c.Paciente).Include(c => c.Ingresos).Where(a => a.Fecha_De_Salida == busqueda);
+
+                ViewBag.total = altas.Sum(a => a.Monto);
+                ViewBag.conteo = altas.Count();
+                ViewBag.min = altas.Min(a => a.Monto);
+                ViewBag.max = altas.Max(a => a.Monto);
+                ViewBag.media = altas.Average(a => a.Monto);
+
+
                 return View(altas.ToList());
             }
 
-            else if (activo == "Sumatoria")
-            {
-                var abc = db.Altas.Sum(x => x.Monto).ToString();
-                ViewBag.total = abc;
-
-                return View(abc);
-            }
+            
+            
+                
 
             return View(db.Altas.ToList());
         

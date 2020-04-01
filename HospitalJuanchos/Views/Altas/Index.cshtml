@@ -8,7 +8,49 @@
 <p>
     <a href="@Url.Action("Create", "Altas")" class="btn btn-success myBtn">Crear Nueva Alta Medica</a>
     <a href="@Url.Action("Imprimir", "Altas")" class="btn btn-danger myBtn">Convertir a PDF</a>
+    <button type="button" class="btn btn-primary myBtn" data-toggle="modal" data-target="#CalculosGenerales">
+        Calculos General
+    </button>
 </p>
+<!-- Modal -->
+<div class="modal fade" id="CalculosGenerales" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Resultados de Caculos Generales</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Promedio</th>
+                            <th scope="col">Conteo</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Minimo</th>
+                            <th scope="col">Maximo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@ViewBag.media</td>
+                            <td>@ViewBag.conteo</td>
+                            <td>@ViewBag.total</td>
+                            <td>@ViewBag.min</td>
+                            <td>@ViewBag.max</td>
+                        </tr>
+                    
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger myBtn" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
 @using (Html.BeginForm("Index", "Altas", FormMethod.Post))
 {
     <div class="between">
@@ -23,7 +65,6 @@
 
         <div class="col-2">
             <button type="submit" class="btn btn-success">Buscar</button>
-            <input type="submit" class="btn btn-primary" name="activo" value="Sumatoria" placeholder="Sumatoria"/>
         </div>
     </div>
 }
@@ -54,30 +95,28 @@
 
     @foreach (var item in Model)
     {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ingresos.ID_Ingresos)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre_De_Paciente)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fecha_De_Ingreso)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fecha_De_Salida)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Habitacion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Monto)
-        </td>
-        
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ingresos.ID_Ingresos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre_De_Paciente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha_De_Ingreso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha_De_Salida)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Habitacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Monto)
+            </td>
 
-    </tr>
+
+        </tr>
     }
 
 </table>
-<h3>Sumatoria de precios:</h3>
-<span>@ViewBag.total</span>
