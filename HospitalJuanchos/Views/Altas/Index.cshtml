@@ -12,12 +12,11 @@
         Calculos General
     </button>
 </p>
-<!-- Modal -->
-<div class="modal fade" id="CalculosGenerales" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="CalculosGenerales" tabindex="-1" role="dialog" aria-labelledby="TitulosCalculos" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Resultados de Caculos Generales</h5>
+                <h5 class="modal-title" id="TituloCalculos">Resultados de Caculos Generales</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -41,7 +40,7 @@
                             <td>@ViewBag.min</td>
                             <td>@ViewBag.max</td>
                         </tr>
-                    
+
                     </tbody>
                 </table>
             </div>
@@ -51,6 +50,7 @@
         </div>
     </div>
 </div>
+
 @using (Html.BeginForm("Index", "Altas", FormMethod.Post))
 {
     <div class="between">
