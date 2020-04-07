@@ -8,7 +8,7 @@
 
 <p>
     <a href="@Url.Action("Create", "Citas")" class="btn btn-success myBtn">Crear Nueva Cita Medicaa</a>
-    <a href="@Url.Action("Imprimir", "Citas")" class="btn btn-danger myBtn">Convertir a PDF</a>
+    <button onclick="SacandoPDF()" class="btn btn-danger myBtn">Imprimir</button>
 
 </p>
 @using (Html.BeginForm("Index", "Citas", FormMethod.Post))
@@ -31,7 +31,11 @@
 }
 <br />
 <br />
-<table class="table">
+<div id="IDSacar"
+      <h4>
+        Listado de Citas
+     </h4>
+<table class="table" id="IDSacar">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Medico.Nombre_Med)
@@ -69,6 +73,7 @@
     }
 
 </table>
+    </div>
 <div>
     <a href="@Url.Action("Procesos", "Home")" class="btn btn-warning myBtn">Atras</a>
 </div>

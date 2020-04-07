@@ -68,3 +68,7 @@ a:hover {
 .between {
     display: flex;
 }
+.my-flex{
+    display:flex;
+    justify-content:center !important;
+}

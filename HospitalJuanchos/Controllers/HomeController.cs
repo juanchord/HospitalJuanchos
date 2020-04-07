@@ -24,5 +24,10 @@ namespace HospitalJuanchos.Controllers
 
             return View();
         }
+        public ActionResult AcercaDe()
+        {
+
+            return View();
+        }
     }
 }

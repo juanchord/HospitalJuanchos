@@ -31,5 +31,18 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script src="~/Content/html2pdf.bundle.min.js"></script>
+    <script>function SacandoPDF() {
+        var element = document.getElementById('IDSacar');
+        var opt = {
+            margin: 1,
+            filename: 'ArchivoSacado.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+        };
+
+        html2pdf(element, opt);
+    }</script>
 </body>
 </html>

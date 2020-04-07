@@ -4,11 +4,10 @@
     ViewBag.Title = "Hospital Juanchos - Lista de Habitaciones";
 }
 
-<h2>Listado de Habitaciones</h2>
 
 <p>
     <a href="@Url.Action("Create", "Habitaciones")" class="btn btn-success myBtn">Crear Nueva Habitacion</a>
-    <a href="@Url.Action("Imprimir", "Habitaciones")" class="btn btn-danger myBtn">Convertir a PDF</a>
+    <button onclick="SacandoPDF()" class="btn btn-danger myBtn">Imprimir</button>
 </p>
  @using (Html.BeginForm("Index", "Habitaciones", FormMethod.Post))
  {
@@ -18,8 +17,11 @@
     <button class="btn btn-success" name="select" value="Suite">Suite</button>
 </div>
  }
-
-<table class="table">
+<div id="IDSacar"
+      <h4>
+        Listado de Habitaciones
+     </h4>
+<table class="table" id="IDSacar">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Numero_Hab)
@@ -58,6 +60,7 @@
     }
 
 </table>
+    </div>
 <div>
     <a href="@Url.Action("Mantenimiento", "Home")" class="btn btn-warning myBtn">Atras</a>
 </div>

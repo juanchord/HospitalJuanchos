@@ -4,11 +4,10 @@
     ViewBag.Title = "Hospital Juanchos - Ingresos";
 }
 
-<h2>Listado de Ingresos</h2>
 
 <p>
     <a href="@Url.Action("Create", "Ingresos")" class="btn btn-success myBtn">Crear Nuevo Ingreso</a>
-    <a href="@Url.Action("Imprimir", "Ingresos")" class="btn btn-danger myBtn">Convertir a PDF</a>
+    <button onclick="SacandoPDF()" class="btn btn-danger myBtn">Imprimir</button>
 
 </p>
 @using (Html.BeginForm("Index", "Ingresos", FormMethod.Post))
@@ -30,7 +29,9 @@
 }
 <br />
 <br />
-<table class="table">
+<div id="IDSacar"
+     <h4>Listado de Ingresos</h4>
+<table class="table" id="IDSacar">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Habitacion.Numero_Hab)
@@ -61,3 +62,9 @@
     }
 
 </table>
+
+    </div>
+<div>
+    <a href="@Url.Action("Procesos", "Home")" class="btn btn-warning myBtn">Atras</a>
+</div>
+
