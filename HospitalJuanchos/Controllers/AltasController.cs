@@ -204,43 +204,43 @@ namespace HospitalJuanchos.Controllers
         [HttpPost]
         public JsonResult NombrePac(int clavep)
         {
-            var duplicado = (from i in db.Ingresos
+            var mostrar = (from i in db.Ingresos
                              join p in db.Pacientes
                              on i.ID_Paciente equals p.ID_Paciente
                              where i.ID_Ingresos == clavep
                              select p.Nombre_Pac).ToList();
-            return Json(duplicado);
+            return Json(mostrar);
         }
 
         public JsonResult MontoT(int clavep)
         {
 
-            var duplicado = (from i in db.Ingresos
+            var mostrar = (from i in db.Ingresos
                              join h in db.Habitaciones
                              on i.ID_Habitacion equals h.ID_Habitacion
                              where i.ID_Ingresos == clavep
                              select h.Precio).ToList();
-            return Json(duplicado);
+            return Json(mostrar);
         }
 
         public JsonResult FechaDeIngreso(int clavep)
         {
 
-            var duplicado = (from i in db.Ingresos
+            var mostrar = (from i in db.Ingresos
                              where i.ID_Ingresos == clavep
                              select i.Fecha_De_Ingreso).ToList();
-            return Json(duplicado);
+            return Json(mostrar);
         }
 
         public JsonResult NumHabitacion(int clavep)
         {
 
-            var duplicado = (from i in db.Ingresos
+            var mostrar = (from i in db.Ingresos
                              join h in db.Habitaciones
                              on i.ID_Habitacion equals h.ID_Habitacion
                              where i.ID_Ingresos == clavep
                              select h.Numero_Hab).ToList();
-            return Json(duplicado);
+            return Json(mostrar);
         }
     }
 }

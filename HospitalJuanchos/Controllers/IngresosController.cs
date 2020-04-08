@@ -37,12 +37,10 @@ namespace HospitalJuanchos.Controllers
 
             else if (select == "Num_Hab")
             {
-                int s = (from g in db.Habitaciones where g.Numero_Hab == busqueda select g.ID_Habitacion).SingleOrDefault();
-                //var ext = (from ex in db.Habitaciones where ex.Num_Habitacion == busqueda select ex).First().ID_Habitacion;
-                //string x = ext.ToString();
-                //int y = int.Parse(x);
+                int a = (from g in db.Habitaciones where g.Numero_Hab == busqueda select g.ID_Habitacion).SingleOrDefault();
+                
 
-                var ingresos = db.Ingresos.Include(c => c.Habitacion).Include(c => c.Paciente).Where(a => a.ID_Habitacion.Equals(s));
+                var ingresos = db.Ingresos.Include(c => c.Habitacion).Include(c => c.Paciente).Where(b => b.ID_Habitacion.Equals(a));
                 return View(ingresos.ToList());
             }
             else if (select == "Fecha_De_Ingreso")

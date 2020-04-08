@@ -37,24 +37,23 @@ namespace HospitalJuanchos.Controllers
 
             else if (select == "Nombre_Med")
             {
-                int s = (from g in db.Medicos where g.Nombre_Med == busqueda select g.ID_Medico).SingleOrDefault();
-                //var ext = (from ex in db.Habitaciones where ex.Num_Habitacion == busqueda select ex).First().ID_Habitacion;
-                //string x = ext.ToString();
-                //int y = int.Parse(x);
-                var citas = db.Citas.Include(c => c.Medico).Include(c => c.Paciente).Where(a => a.ID_Medico.Equals(s));
+                int a = (from g in db.Medicos where g.Nombre_Med == busqueda select g.ID_Medico).SingleOrDefault();
+               
+                var citas = db.Citas.Include(c => c.Medico).Include(c => c.Paciente).Where(b => b.ID_Medico.Equals(a));
                 return View(citas.ToList());
 
             }
             else if (select == "Nombre_Pac")
             {
-                int s = (from g in db.Pacientes where g.Nombre_Pac == busqueda select g.ID_Paciente).SingleOrDefault();
+                int a = (from g in db.Pacientes where g.Nombre_Pac == busqueda select g.ID_Paciente).SingleOrDefault();
 
-                var citas = db.Citas.Include(c => c.Medico).Include(c => c.Paciente).Where(a => a.ID_Paciente.Equals(s));
+                var citas = db.Citas.Include(c => c.Medico).Include(c => c.Paciente).Where(b => b.ID_Paciente.Equals(a));
                 return View(citas.ToList());
             }
             else if (select == "Fecha_De_Cita")
             {
-                var citas = db.Citas.Include(c => c.Medico).Include(c => c.Paciente).Where(a => a.Fecha_De_Cita == busqueda);
+
+                var citas = db.Citas.Include(c => c.Paciente).Include(c => c.Medico).Where(a => a.Fecha_De_Cita == busqueda);
                 return View(citas.ToList());
             }
 

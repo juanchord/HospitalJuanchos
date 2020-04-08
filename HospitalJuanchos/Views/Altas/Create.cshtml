@@ -81,12 +81,10 @@
         const generandomonto = (data) => {
             let datex = document.getElementById("Fecha_De_Salida").value;
             let datei = document.getElementById("Fecha_De_Ingreso").value;
-
             let date1 = new Date(datei);
             let date2 = new Date(datex);
             let resta1 = date2.getTime() - date1.getTime();
             let resta2 = Math.round(resta1 / (1000 * 60 * 60 * 24));
-
             return resta2 * data;
         }
 
