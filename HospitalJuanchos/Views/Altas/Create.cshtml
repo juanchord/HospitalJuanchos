@@ -76,91 +76,74 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script>
-        $(function (){
-            $("#ID_Ingreso").change(function () {
-                var url = "@Url.Action("NombrePac", "Altas")";
-                var clavePaciente = $("#ID_Ingreso").val();
-                var data = { clavePaciente: clavePaciente };
-                $.post(url, data).done(function (data) {
-                    $("#Nombre_De_Paciente").val(data);
-                }).fail(manejarErrorAjax).always(function (){
+        const { log } = console;
 
+        const generandomonto = (data) => {
+            let datex = document.getElementById("Fecha_De_Salida").value;
+            let datei = document.getElementById("Fecha_De_Ingreso").value;
+
+            let date1 = new Date(datei);
+            let date2 = new Date(datex);
+            let resta1 = date2.getTime() - date1.getTime();
+            let resta2 = Math.round(resta1 / (1000 * 60 * 60 * 24));
+
+            return resta2 * data;
+        }
+
+        $(function () {
+            
+            $("#ID_Ingreso").change( ()=> {
+                let url = "@Url.Action("NombrePac", "Altas")";
+                let clavep = $("#ID_Ingreso").val();
+                let data = { clavep: clavep };
+                $.post(url, data).done( (data) => {
+                    $("#Nombre_De_Paciente").val(data);
+                }).fail(errorController).always( () =>{
+                    throw errorController;
                 });
             });
-            $("#ID_Ingreso").change(function () {
-                var url = "@Url.Action("FechaDeIngreso", "Altas")";
-                var clavePaciente = $("#ID_Ingreso").val();
-                var data = { clavePaciente: clavePaciente };
-                $.post(url, data).done(function (data) {
+            $("#ID_Ingreso").change( ()=> {
+                let url = "@Url.Action("FechaDeIngreso", "Altas")";
+                let clavep = $("#ID_Ingreso").val();
+                let data = { clavep: clavep };
+                $.post(url, data).done((data) => {
                     $("#Fecha_De_Ingreso").val(data);
-                }).fail(manejarErrorAjax).always(function (){
-
+                }).fail(errorController).always( () => {
+                    throw errorController;
                 });
              });
-            $("#ID_Ingreso").change(function () {
-                var url = "@Url.Action("NumHabitacion", "Altas")";
-                var clavePaciente = $("#ID_Ingreso").val();
-                var data = { clavePaciente: clavePaciente };
-                $.post(url, data).done(function (data) {
+            $("#ID_Ingreso").change( ()=> {
+                let url = "@Url.Action("NumHabitacion", "Altas")";
+                let clavep = $("#ID_Ingreso").val();
+                let data = { clavep: clavep };
+                $.post(url, data).done((data) => {
                     $("#Habitacion").val(data);
-                }).fail(manejarErrorAjax).always(function (){
-
+                }).fail(errorController).always( ()=> {
+                    throw errorController;
                 });
              });
 
-            $("#ID_Ingreso").change(function () {
+            $("#ID_Ingreso").change(()=> {
 
                 $("#Fecha_De_Salida").val();
 
             });
 
-            $("#ID_Ingreso").change(function () {
-                var url = "@Url.Action("MontoT", "Altas")";
-                var clavePaciente = $("#ID_Ingreso").val();
-                var data = { clavePaciente: clavePaciente };
-                $.post(url, data).done(function (data) {
-                    $("#Monto").val(generaMonto(data));
-                }).fail(manejarErrorAjax).always(function (){
-
+            $("#ID_Ingreso").change(()=> {
+                let url = "@Url.Action("MontoT", "Altas")";
+                let clavep = $("#ID_Ingreso").val();
+                let data = { clavep: clavep };
+                $.post(url, data).done((data) =>{
+                    $("#Monto").val(generandomonto(data));
+                }).fail(errorController).always(()=> {
+                    throw errorController;
                 });
              });
 
 
-            function manejarErrorAjax(err) {
-                console.log(err.responseText);
+            const  errorController = (err) => {
+               log(err.responseText);
             }
-        })
-
-   /*    function addZero(i) {
-            if (i < 10) {
-                i = '0' + i;
-            }
-            return i;
-        }
-
-        function hoyFecha() {
-            var hoy = new Date();
-            var dd = hoy.getDate();
-            var mm = hoy.getMonth() + 1;
-            var yyyy = hoy.getFullYear();
-
-            dd = addZero(dd);
-            mm = addZero(mm);
-
-            return yyyy + '-' + mm + '-' + dd;
-        }*/
-        console.log(generaMonto())
-
-        function generaMonto(data) {
-            var fechaf = document.getElementById("Fecha_De_Salida").value;
-            var fechai = document.getElementById("Fecha_De_Ingreso").value;
-
-            var fecha1 = new Date(fechai);
-            var fecha2 = new Date(fechaf);
-            var resta1 = fecha2.getTime() - fecha1.getTime();
-            var resta2 = Math.round(resta1 / (1000 * 60 * 60 * 24))
-
-            return resta2 * data;
-        }
+        })  
     </script>
 }

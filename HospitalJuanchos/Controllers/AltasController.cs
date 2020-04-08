@@ -202,43 +202,43 @@ namespace HospitalJuanchos.Controllers
 
         }
         [HttpPost]
-        public JsonResult NombrePac(int clavePaciente)
+        public JsonResult NombrePac(int clavep)
         {
             var duplicado = (from i in db.Ingresos
                              join p in db.Pacientes
                              on i.ID_Paciente equals p.ID_Paciente
-                             where i.ID_Ingresos == clavePaciente
+                             where i.ID_Ingresos == clavep
                              select p.Nombre_Pac).ToList();
             return Json(duplicado);
         }
 
-        public JsonResult MontoT(int clavePaciente)
+        public JsonResult MontoT(int clavep)
         {
 
             var duplicado = (from i in db.Ingresos
                              join h in db.Habitaciones
                              on i.ID_Habitacion equals h.ID_Habitacion
-                             where i.ID_Ingresos == clavePaciente
+                             where i.ID_Ingresos == clavep
                              select h.Precio).ToList();
             return Json(duplicado);
         }
 
-        public JsonResult FechaDeIngreso(int clavePaciente)
+        public JsonResult FechaDeIngreso(int clavep)
         {
 
             var duplicado = (from i in db.Ingresos
-                             where i.ID_Ingresos == clavePaciente
+                             where i.ID_Ingresos == clavep
                              select i.Fecha_De_Ingreso).ToList();
             return Json(duplicado);
         }
 
-        public JsonResult NumHabitacion(int clavePaciente)
+        public JsonResult NumHabitacion(int clavep)
         {
 
             var duplicado = (from i in db.Ingresos
                              join h in db.Habitaciones
                              on i.ID_Habitacion equals h.ID_Habitacion
-                             where i.ID_Ingresos == clavePaciente
+                             where i.ID_Ingresos == clavep
                              select h.Numero_Hab).ToList();
             return Json(duplicado);
         }
